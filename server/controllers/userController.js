@@ -2,7 +2,17 @@ const db = require("../db/connection");
 
 // 全ユーザーを取得する
 const getUsers = (req, res) => {
-    const sqlSelect = "SELECT * FROM users ORDER BY id";
+  const sqlSelect =
+    `SELECT
+      employees.id,
+      employees.name_kanji,
+      employees.name_kana,
+      sales.name_kanji,
+      sales.name_kana,
+      feedback.created_at
+    FROM employees
+    left join sales on sales.id = employees.sales_contact
+    left join feedback on feedback.employee_id = employees.id`;
     db.query(sqlSelect, (err, result) => {
         if (err) {
             console.error(err);
@@ -13,18 +23,4 @@ const getUsers = (req, res) => {
     });
 };
 
-// 新しいユーザーを追加する
-const insertUser = (req, res) => {
-    const { name, email } = req.body;
-    const sqlInsert = "INSERT INTO users (name, email) VALUES (?, ?)";
-    db.query(sqlInsert, [name, email], (err, result) => {
-        if (err) {
-            console.error(err);
-            res.status(500).send("Failed to insert new user");
-        } else {
-            res.status(200).send("User added successfully");
-        }
-    });
-};
-
-module.exports = { getUsers, insertUser };
+module.exports = { getUsers };

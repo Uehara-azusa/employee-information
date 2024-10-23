@@ -6,6 +6,6 @@ const userController = require("../controllers/userController");
 router.get("/get/users", userController.getUsers);
 
 // 新しいユーザーを追加する
-router.post("/insert/user", userController.insertUser);
+// router.post("/insert/user", userController.insertUser);
 
 module.exports = router;
