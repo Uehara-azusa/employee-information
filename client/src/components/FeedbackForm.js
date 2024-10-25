@@ -1,18 +1,27 @@
 // import React from "react";
-// // import React, { useState } from "react";
+import React, { useState } from "react";
+// import axiosInstance from "../api/axiosInstance";
 
-// const FeedbackForm = ({ addUser }) => {
-//     // const [name, setName] = useState("");
-//     // const [email, setEmail] = useState("");
+const FeedbackForm = () => {
+const [feedback, setFeedback] = useState([]);
 
-//     return (
-//       <>
-//         <input type="radio">ポジティブ</input>
-//         <input type="radio">ネガティブ</input>
-//         <input type="radio">その他</input>
-//         <textarea>あいうえお</textarea>
-//         </>
-//     );
-// };
+const handleChange = (e) => {
+  setFeedback(e.target.value)
+}
 
-// export default FeedbackForm;
+const handleClick = () => {
+
+}
+
+    return (
+      <form>
+        <input type="radio" name="category" />ポジティブ
+        <input type="radio" name="category" />ネガティブ
+        <input type="radio" name="category" />その他<br />
+        <textarea value={feedback} onChange={handleChange}>あいうえお</textarea>
+        <input type="submit" onClick={handleClick} />
+      </form>
+    );
+};
+
+export default FeedbackForm;

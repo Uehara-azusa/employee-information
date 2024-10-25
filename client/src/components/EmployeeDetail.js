@@ -12,15 +12,19 @@ const EmployeeDetail = () => {
       .catch((error) => console.error('情報の取得に失敗しました：', error));
   }, []);
 
+  if (employee.length === 0) {
+    return <div>情報読み込み中...</div>
+  }
+
   // const employeeList = employee;
   console.log(employee);
   return (
     <table border="1">
       <tr>
         <th>社員名</th>
-        {/* <td>{employee[0].name_kanji}</td> */}
+        <td>{employee[0].name_kanji}</td>
       </tr>
-      {/* <tr>
+      <tr>
         <th>部署</th>
         <td>{employee[0].department}</td>
         <th>役職</th>
@@ -35,7 +39,7 @@ const EmployeeDetail = () => {
         <td>　　　　　</td>
         <th>査定実施者</th>
         <td>　　　　　</td>
-      </tr> */}
+      </tr>
     </table>
   );
 };
