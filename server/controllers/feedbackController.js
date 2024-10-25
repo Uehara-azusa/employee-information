@@ -15,13 +15,18 @@ const getFeedback = (req, res) => {
 
 // フィードバックを追加する
 const addFeedback = (req, res) => {
-  const sqlSelect = `insert * from feedback`;
-  database.query(sqlSelect, (err, result) => {
+  const { feedback_type, content, created_at } = req.body;
+  const sqlSelect = `insert into feedback
+  (feedback_type,
+  content,
+  created_at)
+  values(?,?,?)`;
+  database.query(sqlInsert, [feedback_type, content, created_at],(err, result) => {
     if (err) {
       console.error(err);
-      res.status(500).send("Error retrieving users from the database");
+      res.status(500).send("Failed to insert new user");
     } else {
-      res.send(result);
+      res.status(200).send("User added successfully");
     }
   });
 };
