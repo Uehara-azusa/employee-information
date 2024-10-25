@@ -2,13 +2,14 @@ import React from "react";
 // import './App.css';
 // import useCategories from "./hooks/useCategories";
 // import UserForm from "./components/UserForm";
-import EmployeeList from "./components/EmployeeList";
 // import apiService from "./services/apiService";
+// import EmployeeList from "./components/EmployeeList";
+import EmployeeDetail from "./components/EmployeeDetail";
 
 function App() {
   return (
     <div ClassName="App">
-      <EmployeeList />
+      <EmployeeDetail />
     </div>
   );
     // const { categoryList, refreshCategories } = useCategories();

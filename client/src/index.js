@@ -1,9 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import App from './App';
 
-// Appコンポーネントをルート要素にレンダリング
-ReactDOM.render(
-    <App />, // Appコンポーネントを描画
-  document.getElementById('root') // HTMLファイル内のid="root"の要素に描画
+const root = createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
 );
