@@ -1,16 +1,16 @@
 import React from "react";
+import { BrowserRouter } from 'react-router-dom';
 // import './App.css';
 // import useCategories from "./hooks/useCategories";
 // import UserForm from "./components/UserForm";
 // import apiService from "./services/apiService";
-// import EmployeeList from "./components/EmployeeList";
-import EmployeeDetail from "./components/EmployeeDetail";
+import EmployeePage from "./pages/EmployeePage";
 
 function App() {
   return (
-    <div ClassName="App">
-      <EmployeeDetail />
-    </div>
+    <BrowserRouter ClassName="App">
+      <EmployeePage />
+    </BrowserRouter>
   );
     // const { categoryList, refreshCategories } = useCategories();
 

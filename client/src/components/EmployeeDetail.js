@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import axiosInstance from "../api/axiosInstance";
 import FeedbackForm from "../components/FeedbackForm"
 
 const EmployeeDetail = () => {
   const [employee, setEmployee] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     //axiosInstance.jsを通じてAPIリクエストを送る
@@ -17,10 +19,9 @@ const EmployeeDetail = () => {
     return <div>情報読み込み中...</div>;
   }
 
-  // const employeeList = employee;
-  console.log(employee);
   return (
     <>
+      <button onClick={() => navigate('/')}>戻る</button>
       <table border="1">
         <tr>
           <th>社員名</th>

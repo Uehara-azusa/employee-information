@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import axiosInstance from "../api/axiosInstance";
 
 const EmployeeList = () => {
   const [employee, setEmployee] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     //axiosInstance.jsを通じてAPIリクエストを送る
@@ -15,21 +17,23 @@ const EmployeeList = () => {
   return (
     <table border="1">
       <tr>
+        <th>ID</th>
         <th>社員名</th>
-        <th>社員名ふりがな</th>
         <th>担当営業</th>
-        <th>担当営業ふりがな</th>
-        <th>部署</th>
-        <th>役職</th>
+        <th>情報共有ボタン</th>
       </tr>
       {employee.map((val) => (
           <tr key={val.id}>
-            <td>{val.name_kanji}</td>
-            <td>{val.name_kana}</td>
-            <td>{val.sales_kanji}</td>
-            <td>{val.sales_kana}</td>
-            <td>{val.department}</td>
-            <td>{val.position}</td>
+            <td>{val.id}</td>
+            <td>
+            {val.name_kana}<br />
+            {val.name_kanji}
+            </td>
+            <td>
+            {val.sales_kana}<br />
+            {val.sales_kanji}
+            </td>
+          <td><button onClick={() => navigate('/detail')}>共有情報</button></td>
           </tr>
       ))}
     </table>
