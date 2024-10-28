@@ -5,11 +5,11 @@ const getEmployee = (req, res) => {
   const sqlSelect = `select
 	employees.id,
 	employees.name_kanji,
-    employees.name_kana,
-    sales.name_kanji as sales_kanji,
-    sales.name_kana as sales_kana,
-    employees.department,
-    employees.position
+  employees.name_kana,
+  sales.name_kanji as sales_kanji,
+  sales.name_kana as sales_kana,
+  employees.department,
+  employees.position
   from employees
   left join sales on sales.id = employees.sales_contact`;
   database.query(sqlSelect, (err, result) => {
@@ -24,24 +24,26 @@ const getEmployee = (req, res) => {
 
 // 遷移先ユーザー情報を取得する
 const getDetail = (req, res) => {
+  const employeeId = req.params.id;
   const sqlSelect = `select
 	employees.name_kanji,
-    employees.department,
-    employees.position,
-    sales.name_kanji as sales_kanji
+  employees.department,
+  employees.position,
+  sales.name_kanji as sales_kanji
   from employees
-  left join sales on sales.id = employees.sales_contact`;
-  database.query(sqlSelect, (err, result) => {
+  left join sales on sales.id = employees.sales_contact
+  where employees.id = ?`;
+  database.query(sqlSelect, [employeeId], (err, result) => {
     if (err) {
       console.error(err);
       res.status(500).send("Error retrieving users from the database");
     } else {
-      res.send(result);
+      res.send(result[0]);
     }
   });
 };
 
 module.exports = {
   getEmployee,
-  getDetail
+  getDetail,
 };

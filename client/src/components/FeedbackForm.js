@@ -24,17 +24,42 @@ const FeedbackForm = (addFeedback) => {
   const datetime = { date } + { time };
 
   return (
-    <form>
-      <input type="radio" name="category" onChange={(e) => setSelect(e.target.value)} value="keep" checked={select === "keep"} />
+    <>
+      <label></label>
+      <form>
+        <input
+          type="radio"
+          name="category"
+          onChange={(e) => setSelect(e.target.value)}
+          value="keep"
+          checked={select === "keep"}
+        />
         ポジティブ
-        <input type="radio" name="category"onChange={(e) => setSelect(e.target.value)} value="problem" />
+        <input
+          type="radio"
+          name="category"
+          onChange={(e) => setSelect(e.target.value)}
+          value="problem"
+        />
         ネガティブ
-        <input type="radio" name="category"onChange={(e) => setSelect(e.target.value)} value="try" />
+        <input
+          type="radio"
+          name="category"
+          onChange={(e) => setSelect(e.target.value)}
+          value="try"
+        />
         その他
         <br />
-      <textarea value={feedback} onChange={(e) => setFeedback(e.target.value)}></textarea>
-      <input type="submit" onClick={() => addFeedback(select, feedback, datetime)}/>
-    </form>
+        <textarea
+          value={feedback}
+          onChange={(e) => setFeedback(e.target.value)}
+        ></textarea>
+        <input
+          type="submit"
+          onClick={() => addFeedback(select, feedback, datetime)}
+        />
+      </form>
+    </>
   );
 };
 

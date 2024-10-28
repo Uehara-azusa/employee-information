@@ -33,7 +33,7 @@ const EmployeeList = () => {
             {val.sales_kana}<br />
             {val.sales_kanji}
             </td>
-          <td><button onClick={() => navigate('/detail')}>共有情報</button></td>
+          <td><button onClick={() => navigate(`/detail/${val.id}`)}>共有情報</button></td>
           </tr>
       ))}
     </table>

@@ -10,7 +10,7 @@ function EmployeePage() {
       <Routes>
         {/* 画面遷移 */}
         <Route path="/" element={<EmployeeList />} />
-        <Route path="/detail" element={<EmployeeDetail />} />
+        <Route path="/detail/:id" element={<EmployeeDetail />} />
       </Routes>
     </div>
   );
