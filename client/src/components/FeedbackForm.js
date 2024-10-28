@@ -1,32 +1,45 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import employeeService from "../services/employeeService";
 
 const FeedbackForm = (addFeedback) => {
+  const [employee, setEmployee] = useState([]);
+  const { id } = useParams();
   const [select, setSelect] = useState("keep");
   const [feedback, setFeedback] = useState();
-  const [date, setDate] = useState([]);
-  const [time, setTime] = useState([]);
 
   useEffect(() => {
-    setInterval(() => {
-      let d = new Date();
-      let year = d.getFullYear();
-      let month = d.getMonth() + 1;
-      let day = d.getDate();
+    // employeeService.jsを通じてAPIリクエストを送る
+    employeeService.getFeedback(id)
+      .then((response) => setEmployee(response.data))
+      .catch((error) => console.error("フィードバック情報の取得に失敗しました：", error));
+  }, [id]);
 
-      setDate(year + "年" + month + "月" + day + "日");
-
-      let hour = d.getHours().toString().padStart(2, "0");
-      let minute = d.getMinutes().toString().padStart(2, "0");
-      setTime(hour + ":" + minute);
-    }, 1000);
-  });
-
-  const datetime = { date } + { time };
+  const handleSubmit = (e) => {
+  employeeService.addFeedback(id, select, feedback)
+    .then(() => {
+      alert("フィードバックが送信されました！");
+      setFeedback(""); // フィードバック送信後にテキストボックスをリセット
+    })
+    .catch((error) => {
+      alert("フィードバック送信に失敗しました。");
+    });
+}
 
   return (
     <>
-      <label></label>
-      <form>
+      <div>
+        <hr />
+        <label>テスト：日付</label>
+        <hr />
+        <div>
+          <p>{employee.created_at}テスト：日時</p>
+          <hr />
+          <p id={employee.feedback_type}>{employee.content}テスト：内容</p>
+        </div>
+      </div>
+      <hr />
+      <form onSubmit={handleSubmit}>
         <input
           type="radio"
           name="category"
@@ -54,10 +67,9 @@ const FeedbackForm = (addFeedback) => {
           value={feedback}
           onChange={(e) => setFeedback(e.target.value)}
         ></textarea>
-        <input
-          type="submit"
-          onClick={() => addFeedback(select, feedback, datetime)}
-        />
+        <button type="submit">
+          投稿
+        </button>
       </form>
     </>
   );

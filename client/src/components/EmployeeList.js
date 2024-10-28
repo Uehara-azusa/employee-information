@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
-import axiosInstance from "../api/axiosInstance";
+import employeeService from "../services/employeeService";
 
 const EmployeeList = () => {
   const [employee, setEmployee] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    //axiosInstance.jsを通じてAPIリクエストを送る
-    axiosInstance
-      .get('/employee')
+    // employeeService.jsを通じてAPIリクエストを送る
+    employeeService.getEmployee()
       .then((response) => setEmployee(response.data))
-      .catch((error) => console.error('社員情報の取得に失敗しました：', error));
+      .catch((error) => console.error("社員情報の取得に失敗しました：", error));
   }, []);
 
   return (

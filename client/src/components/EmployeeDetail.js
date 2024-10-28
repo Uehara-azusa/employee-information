@@ -1,19 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from 'react-router-dom';
-import axiosInstance from "../api/axiosInstance";
+import employeeService from "../services/employeeService";
 import FeedbackForm from "../components/FeedbackForm"
-// import employeeController from "../../../server/controllers/employeeController"
 
 const EmployeeDetail = () => {
   const [employee, setEmployee] = useState([]);
   const navigate = useNavigate();
   const { id } = useParams();
-  // const array = employee
 
   useEffect(() => {
-    //axiosInstance.jsを通じてAPIリクエストを送る
-    axiosInstance
-      .get(`/detail/${id}`)
+    // employeeService.jsを通じてAPIリクエストを送る
+    employeeService.getDetail(id)
       .then((response) => setEmployee(response.data))
       .catch((error) => console.error("情報の取得に失敗しました：", error));
   }, [id]);
