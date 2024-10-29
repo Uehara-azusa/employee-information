@@ -9,7 +9,7 @@ const getFeedback = (req, res) => {
       console.error(err);
       res.status(500).send("Error retrieving info from the database");
     } else {
-      res.send(result[0]);
+      res.send(result);
     }
   });
 };
@@ -17,7 +17,6 @@ const getFeedback = (req, res) => {
 // フィードバックを追加する
 const addFeedback = (req, res) => {
   const employeeId = req.params.id;
-  console.log(employeeId)
   const { feedback_type, content } = req.body;
   const sqlInsert = `insert into feedback
   (employee_id,

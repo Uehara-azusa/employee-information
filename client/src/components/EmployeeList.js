@@ -14,7 +14,7 @@ const EmployeeList = () => {
   }, []);
 
   return (
-    <table border="1">
+    <table border="1" className="employeelist">
       <tr>
         <th>ID</th>
         <th>社員名</th>

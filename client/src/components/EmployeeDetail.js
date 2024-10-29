@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from 'react-router-dom';
 import employeeService from "../services/employeeService";
 import FeedbackForm from "../components/FeedbackForm"
+import "../App.css"
 
 const EmployeeDetail = () => {
   const [employee, setEmployee] = useState([]);
@@ -21,11 +22,12 @@ const EmployeeDetail = () => {
 
   return (
     <>
-      <button onClick={() => navigate('/')}>戻る</button>
-      <table border="1">
+      <button className="backbutton" onClick={() => navigate('/')}>戻る</button>
+      <table className="employeedetail">
         <tr>
           <th>社員名</th>
           <td>{employee.name_kanji}</td>
+          <td colspan="2" className="noborder"></td>
         </tr>
         <tr>
           <th>部署</th>
@@ -36,6 +38,7 @@ const EmployeeDetail = () => {
         <tr>
           <th>営業担当</th>
           <td>{employee.sales_kanji}</td>
+          <td colspan="2" className="noborder"></td>
         </tr>
         <tr>
           <th>直属上司</th>

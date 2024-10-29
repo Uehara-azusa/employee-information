@@ -17,7 +17,7 @@ const getFeedback = (id) => {
 
 // フィードバックを追加する
 const addFeedback = (id, employeeId, feedback_type, content) => {
-  return Axios.post(`http://localhost:3001/api/addFeedback${id}`, { employeeId, feedback_type, content });
+  return Axios.post(`http://localhost:3001/api/addFeedback/${id}`, { employeeId, feedback_type, content });
 };
 
 const employeeService = {
