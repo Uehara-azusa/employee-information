@@ -5,17 +5,17 @@ const getEmployee = () => {
   return Axios.get("http://localhost:3001/api/employee");
 };
 
-// 遷移先ユーザー情報を取得する
+// 社員ID別に遷移先社員情報を取得する
 const getDetail = (id) => {
   return Axios.get(`http://localhost:3001/api/detail/${id}`);
 };
 
-//フィードバックを取得する
+// 社員ID別にフィードバック情報を取得する
 const getFeedback = (id) => {
   return Axios.get(`http://localhost:3001/api/getFeedback/${id}`);
 };
 
-// フィードバックを追加する
+// フィードバック情報を追加する
 const addFeedback = (id, employeeId, feedback_type, content) => {
   return Axios.post(`http://localhost:3001/api/addFeedback/${id}`, { employeeId, feedback_type, content });
 };

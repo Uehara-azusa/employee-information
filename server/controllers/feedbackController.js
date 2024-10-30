@@ -1,7 +1,8 @@
 const database = require("../config/database");
 
-//フィードバックを取得する
+// 社員IDごとにフィードバック情報を取得する
 const getFeedback = (req, res) => {
+  // 社員IDのパスパラメーターを取得
   const employeeId = req.params.id;
   const sqlSelect = `select * from feedback where employee_id = ?`;
   database.query(sqlSelect, [employeeId], (err, result) => {
@@ -14,8 +15,9 @@ const getFeedback = (req, res) => {
   });
 };
 
-// フィードバックを追加する
+// 社員IDごとにフィードバック情報を追加する
 const addFeedback = (req, res) => {
+  // 社員IDのパスパラメーターを取得
   const employeeId = req.params.id;
   const { feedback_type, content } = req.body;
   const sqlInsert = `insert into feedback

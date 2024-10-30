@@ -10,22 +10,22 @@ const EmployeeDetail = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    //employeeService.jsを通じてAPIリクエストを送る
-    //データベースの社員IDごとにデータを取得する
+    // employeeService.jsを通じてAPIリクエストを送る
+    // データベースの社員IDごとに社員情報データを取得する
     employeeService
       .getDetail(id)
       .then((response) => setEmployee(response.data))
       .catch((error) => console.error("情報の取得に失敗しました：", error));
   }, [id]);
 
-  //配列の情報が0の時は「情報読み込み中...」を表示する(エラーハンドリングのようなもの)
-  //これがないとエラーとなる場合があるため防止
+  // 配列内の情報が0の時は「情報読み込み中...」を表示(エラーハンドリングのようなもの)
   if (employee.length === 0) {
     return <div>情報読み込み中...</div>;
   }
 
   return (
     <>
+      {/* ボタンクリックで社員一覧のページへ遷移 */}
       <button className="backbutton" onClick={() => navigate("/")}>
         戻る
       </button>
