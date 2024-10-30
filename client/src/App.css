@@ -2,7 +2,7 @@
 全体のスタイル
 -------------------------*/
 
-.App{
+.App {
   text-align: left;
   width: 80%;
   max-width: 800px;
@@ -24,12 +24,12 @@
   text-align: left;
 }
 
-.employeelist th{
+.employeelist th {
   text-align: center;
   background-color: #f0f7fc;
 }
 
-td > button{
+td > button {
   display: block;
   margin: auto;
   font-size: 15px;
@@ -42,14 +42,14 @@ td > button{
   border-radius: 2px;
 }
 
-td > button:hover{
+td > button:hover {
   opacity: 0.6;
 }
 
 /*-------------------------
 遷移先ページ社員情報のスタイル
 -------------------------*/
-.backbutton{
+.backbutton {
   width: 80px;
   height: 25px;
   font-weight: bold;
@@ -59,7 +59,7 @@ td > button:hover{
   border-radius: 2px;
 }
 
-.backbutton:hover{
+.backbutton:hover {
   opacity: 0.6;
 }
 
@@ -76,12 +76,12 @@ td > button:hover{
   height: 35px;
 }
 
-.employeedetail th{
+.employeedetail th {
   width: 10%;
   background-color: #f0f7fc;
 }
 
-.employeedetail td{
+.employeedetail td {
   width: 20%;
   padding-left: 10px;
 }
@@ -93,30 +93,54 @@ td > button:hover{
 /*-------------------------
 フォーム表示のスタイル
 -------------------------*/
-.displaylist{
-  margin-bottom: 10px;
+.feedbacklist{
+  border: 1px solid lightgray;
+  background-color: #f8f8f8;
+  margin-bottom: 20px;
 }
 
-.feedbackbox{
+.datefield {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.frontline,
+.backline {
+  border: none;
+  width: 43%;
+  border-top: 1px solid lightgray;
+}
+
+.datetext {
+  font-size: 11px;
+  font-weight: bold;
+  color: #666666	;
+}
+
+.feedbackbox {
   width: 70%;
   border: 1px solid #333;
-  border-radius:8px;
+  border-radius: 8px;
   margin-bottom: 10px;
+  margin-left: 15px;
+  background-color: white;
 }
 
-.todaydate{
+.todaydate {
   font-size: 11px;
   font-weight: bold;
   margin-left: 50px;
 }
 
-.displayline{
+.displayline {
   border: none;
   width: 95%;
   border-top: 1px solid lightgray;
 }
 
-.feedbackdate{
+.feedbackdate {
   height: 30px;
   font-size: 12px;
   margin-left: 30px;
@@ -125,19 +149,19 @@ td > button:hover{
 /*-------------------------
 フォーム送信のスタイル
 -------------------------*/
-.feedbackline{
+.feedbackline {
   border: none;
   width: 100%;
   border-top: 1px solid lightgray;
-  margin: 20px 0;
+  margin: 30px 0;
 }
 
-.radiogroup{
+.radiogroup {
   display: flex;
   margin-bottom: -15px;
 }
 
-input[type="radio"]{
+input[type="radio"] {
   width: 11px;
   height: 11px;
   margin-left: 10px;
@@ -145,35 +169,34 @@ input[type="radio"]{
 
 .radiobutton1,
 .radiobutton2,
-.radiobutton3
-{
+.radiobutton3 {
   font-size: 13px;
   font-weight: bold;
 }
 
-.radiobutton1{
-  color: #00BFFF;
+.radiobutton1 {
+  color: #00bfff;
 }
 
-.radiobutton2{
+.radiobutton2 {
   color: red;
 }
 
-.inputform{
+.inputform {
   display: flex;
   align-items: flex-end;
   width: 100%;
   margin-bottom: 30px;
 }
 
-textarea{
+textarea {
   margin-right: 10px;
   line-height: 1.5;
   width: 80%;
-  height: 3em;
+  height: 4.5em;
 }
 
-.submitbuton{
+.submitbuton {
   width: 10%;
   height: 24px;
   font-size: 11px;
@@ -182,6 +205,6 @@ textarea{
   border: none;
 }
 
-.submitbuton:hover{
+.submitbuton:hover {
   opacity: 0.6;
 }
