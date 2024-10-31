@@ -1,4 +1,4 @@
-import Axios from 'axios';
+import Axios from "axios";
 
 // 社員情報一覧を取得する
 const getEmployee = () => {
@@ -17,14 +17,18 @@ const getFeedback = (id) => {
 
 // フィードバック情報を追加する
 const addFeedback = (id, employeeId, feedback_type, content) => {
-  return Axios.post(`http://localhost:3001/api/addFeedback/${id}`, { employeeId, feedback_type, content });
+  return Axios.post(`http://localhost:3001/api/addFeedback/${id}`, {
+    employeeId,
+    feedback_type,
+    content,
+  });
 };
 
 const employeeService = {
   getEmployee,
   getDetail,
   getFeedback,
-  addFeedback
+  addFeedback,
 };
 
 export default employeeService;

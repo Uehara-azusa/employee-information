@@ -1,10 +1,10 @@
-import Axios from 'axios';
+import Axios from "axios";
 
 // Axiosのインスタンスを作成
 const api = Axios.create({
-  baseURL: 'http://localhost:3001/api', // APIサーバーのベースURL
+  baseURL: "http://localhost:3001/api", // APIサーバーのベースURL
   headers: {
-    'Content-Type': 'application/json',// 送受信されるデータの形式を指定
+    "Content-Type": "application/json", // 送受信されるデータの形式を指定
   },
 });
 
