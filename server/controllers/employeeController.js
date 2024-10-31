@@ -1,6 +1,6 @@
 const database = require("../config/database");
 
-//社員情報を取得する
+// 社員情報を取得する
 const getEmployee = (req, res) => {
   const sqlSelect = `select
 	employees.id,
@@ -22,8 +22,9 @@ const getEmployee = (req, res) => {
   });
 };
 
-// 遷移先ユーザー情報を取得する
+// 社員IDごとに遷移先ユーザー情報を取得する
 const getDetail = (req, res) => {
+  // 社員IDのパスパラメーターを取得
   const employeeId = req.params.id;
   const sqlSelect = `select
 	employees.name_kanji,
@@ -38,7 +39,7 @@ const getDetail = (req, res) => {
       console.error(err);
       res.status(500).send("Error retrieving users from the database");
     } else {
-      res.send(result[0]);
+      res.send(result[0]); // 取得した配列データの1つ目の要素をレスポンスとして送信
     }
   });
 };

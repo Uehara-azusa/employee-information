@@ -7,7 +7,7 @@ const EmployeeList = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    //employeeService.jsを通じてAPIリクエストを送る
+    // employeeService.jsを通じてAPIリクエストを送る
     employeeService
       .getEmployee()
       .then((response) => setEmployee(response.data))
@@ -15,7 +15,7 @@ const EmployeeList = () => {
   }, []);
 
   return (
-    //社員情報一覧リストの表示設定
+    // 社員情報一覧リストの表示設定
     <table border="1" className="employeelist">
       <tr>
         <th>ID</th>
@@ -23,6 +23,7 @@ const EmployeeList = () => {
         <th>担当営業</th>
         <th>情報共有ボタン</th>
       </tr>
+      {/* 配列のデータ分処理を繰り返す */}
       {employee.map((val) => (
         <tr key={val.id}>
           <td>{val.id}</td>
@@ -36,7 +37,7 @@ const EmployeeList = () => {
             <br />
             {val.sales_kanji}
           </td>
-          {/* URLの最後にデータベースの社員IDの数字を付与してそれぞれの情報とリンクさせる */}
+          {/* URLの最後にデータベースの社員IDの数字を付与しそれぞれの社員ページへ遷移 */}
           <td>
             <button onClick={() => navigate(`/detail/${val.id}`)}>
               共有情報
