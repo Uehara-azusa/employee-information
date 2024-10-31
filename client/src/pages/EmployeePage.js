@@ -1,8 +1,8 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 
-import EmployeeList from '../components/EmployeeList';
-import EmployeeDetail from '../components/EmployeeDetail';
+import EmployeeList from "../components/EmployeeList";
+import EmployeeDetail from "../components/EmployeeDetail";
 
 function EmployeePage() {
   return (
