@@ -5,8 +5,8 @@ import employeeService from "../services/employeeService";
 const FeedbackForm = () => {
   const [employee, setEmployee] = useState([]);
   const { id } = useParams();
-  const [select, setSelect] = useState("keep");
-  const [feedback, setFeedback] = useState("");
+  const [radioSelect, setRadioSelect] = useState("keep");
+  const [feedbackText, setFeedbackText] = useState("");
 
   useEffect(() => {
     // employeeService.jsを通じてAPIリクエストを送る
@@ -16,9 +16,9 @@ const FeedbackForm = () => {
 
       .then((response) => {
         // Object.groupBy()で日付ごとにグループ化
-        const result = Object.groupBy(response.data, (item) => {
+        const result = Object.groupBy(response.data, (val) => {
           // 指定した日付の表示になるように設定
-          const today = new Date(item.created_at);
+          const today = new Date(val.created_at);
           const year = today.getFullYear();
           const month = today.getMonth() + 1;
           const day = today.getDate();
@@ -37,11 +37,11 @@ const FeedbackForm = () => {
     e.preventDefault(); // フォームのデフォルト送信を防ぐ
     // 追加するデータを指定する
     employeeService
-      .addFeedback(id, employee.employee_id, select, feedback)
+      .addFeedback(id, employee.employee_id, radioSelect, feedbackText)
 
       .then(() => {
         alert("フィードバックが送信されました！");
-        setFeedback(""); // フィードバック送信後にテキストボックスをリセット
+        setFeedbackText(""); // フィードバック送信後にテキストボックスをリセット
       })
       .catch((error) => {
         console.error("Error during feedback submission:", error);
@@ -76,9 +76,9 @@ const FeedbackForm = () => {
                 <hr className="backline" />
               </div>
               {/* 配列に直したものからそれぞれの情報を抜き出し、mapを使って全て表示する */}
-              {feedbackList.map((item) => {
+              {feedbackList.map((val) => {
                 // 指定した日付の表示になるように設定
-                const today = new Date(item.created_at);
+                const today = new Date(val.created_at);
                 const month = today.getMonth() + 1;
                 const day = today.getDate();
                 const h = today.getHours();
@@ -94,10 +94,10 @@ const FeedbackForm = () => {
                     {/* テキストカラーとテキストの設定 */}
                     <p
                       className="feedbackdate"
-                      id={item.feedback_type}
-                      style={{ color: feedbackColor(item.feedback_type) }}
+                      id={val.feedback_type}
+                      style={{ color: feedbackColor(val.feedback_type) }}
                     >
-                      {item.content}
+                      {val.content}
                     </p>
                   </div>
                 );
@@ -115,9 +115,9 @@ const FeedbackForm = () => {
             <input
               type="radio"
               name="category"
-              onChange={(e) => setSelect(e.target.value)}
+              onChange={(e) => setRadioSelect(e.target.value)}
               value="keep"
-              checked={select === "keep"}
+              checked={radioSelect === "keep"}
             />
             ポジティブ
           </label>
@@ -125,7 +125,7 @@ const FeedbackForm = () => {
             <input
               type="radio"
               name="category"
-              onChange={(e) => setSelect(e.target.value)}
+              onChange={(e) => setRadioSelect(e.target.value)}
               value="problem"
             />
             ネガティブ
@@ -134,7 +134,7 @@ const FeedbackForm = () => {
             <input
               type="radio"
               name="category"
-              onChange={(e) => setSelect(e.target.value)}
+              onChange={(e) => setRadioSelect(e.target.value)}
               value="try"
             />
             その他
@@ -144,8 +144,8 @@ const FeedbackForm = () => {
         <div className="inputform">
           {/* テキストエリアの設定 */}
           <textarea
-            value={feedback}
-            onChange={(e) => setFeedback(e.target.value)}
+            value={feedbackText}
+            onChange={(e) => setFeedbackText(e.target.value)}
           ></textarea>
           {/* 投稿ボタンの設定 */}
           <button type="submit" className="submitbuton">
