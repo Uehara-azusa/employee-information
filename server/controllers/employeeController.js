@@ -3,8 +3,8 @@ const database = require("../config/database");
 // 社員情報を取得する
 const getEmployee = (req, res) => {
   const sqlSelect = `select
-	employees.id,
-	employees.name_kanji,
+  employees.id,
+  employees.name_kanji,
   employees.name_kana,
   sales.name_kanji as sales_kanji,
   sales.name_kana as sales_kana,
@@ -27,7 +27,7 @@ const getDetail = (req, res) => {
   // 社員IDのパスパラメーターを取得
   const employeeId = req.params.id;
   const sqlSelect = `select
-	employees.name_kanji,
+  employees.name_kanji,
   employees.department,
   employees.position,
   sales.name_kanji as sales_kanji
