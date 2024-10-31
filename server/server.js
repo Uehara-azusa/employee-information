@@ -13,5 +13,5 @@ app.use("/api", feedbackRoutes);
 
 // サーバーの立ち上げ
 app.listen(3001, () => {
-    console.log('Server running on port 3001');
+  console.log("Server running on port 3001");
 });
